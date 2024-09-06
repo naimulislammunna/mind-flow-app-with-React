@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Nerko+One&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Oswald", sans-serif;
+}
+.logo{
+  font-family: "Nerko One", cursive; 
+}
+ 
+body{
+  max-width: 1440px;
+}
+.home-container{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.button{
+  background-color: #024fba;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 20rem;
+}
+/* .active{
+  color: #FD8549 !important;
+} */
+.button:hover {
+  background-color: #024fbad8;
+  color: white;
+}
