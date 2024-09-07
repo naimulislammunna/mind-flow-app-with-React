@@ -21,7 +21,7 @@ const Navber = () => {
             <div className="navbar flex justify-between">
                 <div>
                     <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden p-0">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
@@ -42,7 +42,7 @@ const Navber = () => {
                         </ul>
                     </div>
                     <div className="flex">
-                        <a className="btn btn-ghost text-4xl logo gap-0">Mind<span className="text-blue-700 logo">Flow</span></a>
+                        <a className="btn btn-ghost text-2xl lg:text-4xl logo gap-0 p-1">Mind<span className="text-blue-700 logo">Flow</span></a>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
