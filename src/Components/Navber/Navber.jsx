@@ -87,7 +87,7 @@ const Navber = () => {
                             <li>
                                 {userInfo?.displayName}
                             </li>
-                            <li><a>Deshboard</a></li>
+                            <li className="my-3"><Link to='/dashboard'>Dashboard</Link></li>
                             <li>{userInfo && <button onClick={handleLogOut} className="px-4 py-2 rounded-full bg-white">Sign Out</button>}</li>
                         </ul>
                     </div>}
