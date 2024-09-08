@@ -16,7 +16,7 @@ const SignIn = () => {
         googleLogIn()
         .then(() => {
             toast.success('Sign In Successfully');
-            navigate(location.state);
+            navigate(location.state || '/');
         })
         .catch(()=> toast.warn('warning'))
     }
@@ -33,7 +33,7 @@ const SignIn = () => {
             console.log(res);
             
             toast.success('Sign In Successfully');
-            navigate(location.state);
+            navigate(location.state || '/');
             form.reset();
             
         })

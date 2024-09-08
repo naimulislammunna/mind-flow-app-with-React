@@ -16,7 +16,7 @@ const Register = () => {
         googleLogIn()
             .then(() => {
                 toast.success('log in Successfully');
-                navigate(location.state);
+                navigate(location.state || '/');
             })
             .catch(() => toast.warn('warning'))
     }
