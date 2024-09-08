@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "tag": "E-commerce"
+    },
+    {
+        "id": 2,
+        "tag": "F-commerce"
+    },
+    {
+        "id": 1,
+        "tag": "JavaScript"
+    },
+    {
+        "id": 1,
+        "tag": "Python"
+    },
+    {
+        "id": 1,
+        "tag": "React"
+    }
+]
