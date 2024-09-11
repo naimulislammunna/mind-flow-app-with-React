@@ -1,15 +1,17 @@
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 
-const Post = () => {
+const Post = ({item}) => {
+    const {post} = item;
+    const {displayName, photoURL, data}= post;
     return (
         <div>
             <div className=" mx-auto my-6 max-w-[650px] rounded-lg bg-white shadow-lg dark:bg-[#18181B] border border-blue-900">
                 <div className="flex items-center justify-between gap-10 px-4 py-4">
                     {/* Avatar image  */}
                     <div className="flex items-center gap-3">
-                        <img width={100} height={100} className="h-16 w-16 rounded-full bg-black/40 object-cover" src="https://images.unsplash.com/photo-1460904577954-8fadb262612c?q=80&w=1990&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="card navigate ui" />
+                        <img width={100} height={100} className="h-16 w-16 rounded-full bg-black/40 object-cover" src={photoURL} alt="card navigate ui" />
                         <div className="flex flex-col">
-                            <h2 className="text-xl font-semibold">Yoan Lee</h2>
+                            <h2 className="text-xl font-semibold">{displayName}</h2>
                             <p className="text-gray-400">2 days ago</p>
                         </div>
                     </div>
@@ -24,8 +26,8 @@ const Post = () => {
                 </div> */}
                 {/* Post content */}
                 <div className="mt-3 space-y-2 px-4">
-                    <h2 className="text-xl font-semibold text-slate-800 dark:text-white/90">My new paintings</h2>
-                    <h2 className="text-sm text-gray-500 dark:text-white/50">Hey, I captured some picture recently. You can check it and share you thoughts with me. I want to listen your thoughts...{' '}<span className="cursor-pointer text-[#3e96d4]">See more</span></h2>
+                    <h2 className="text-xl font-semibold text-slate-800 dark:text-white/90">{data.title}</h2>
+                    <h2 className="text-sm text-gray-500 dark:text-white/50">{data.description}<span className="cursor-pointer text-[#3e96d4]">See more</span></h2>
                 </div>
                 {/* icons */}
                 <div className="mt-4 flex justify-between px-4 pb-4">

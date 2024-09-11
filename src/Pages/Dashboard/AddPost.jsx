@@ -2,15 +2,26 @@ import { useContext, useState} from 'react';
 import { AuthContext } from '../../Auth/AuthProvider';
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 const AddPost = () => {
-    const [value, setValue] = useState(null);
+    // const [value, setValue] = useState(null);
     const { userInfo } = useContext(AuthContext);
     const {email, displayName, photoURL } = userInfo;
-    const {register, handleSubmit} = useForm()
-
-    const onSubmit = (data) => setValue(data);
+    const {register, handleSubmit} = useForm();
+    const onSubmit = async (data) => {
+        const post = {
+            displayName,
+            email,
+            photoURL,
+            data
+        }
+        const response = await axios.post(`${import.meta.env.VITE_SITE_LINK}/post`, {post})
+        console.log(response);
+        
+    };
   
+   
 
     return (
         <div>
@@ -32,7 +43,7 @@ const AddPost = () => {
                             }
                         </div>
                     </div>
-                    <div className="space-y-5">
+                    <div className="space-y-2">
                         <label>Title</label>
                         <input type="text" className="text-xl block w-full rounded-lg p-2 pl-5 outline-none drop-shadow-lg bg-white dark:bg-gray-700 dark:text-white border border-gray-400" {...register("title")}/>
                         <label>Description</label>

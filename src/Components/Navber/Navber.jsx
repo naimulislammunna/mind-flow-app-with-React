@@ -5,9 +5,9 @@ import { AuthContext } from "../../Auth/AuthProvider";
 
 
 const Navber = () => {
-    const {userInfo, logOut} = useContext(AuthContext);
+    const { userInfo, logOut } = useContext(AuthContext);
 
-    const handleLogOut = () =>{
+    const handleLogOut = () => {
         logOut();
     }
 
@@ -42,7 +42,9 @@ const Navber = () => {
                         </ul>
                     </div>
                     <div className="flex">
-                        <a className="btn btn-ghost text-2xl lg:text-4xl logo gap-0 p-1">Mind<span className="text-blue-700 logo">Flow</span></a>
+                        <Link to='/'>
+                            <a className="btn btn-ghost text-2xl lg:text-4xl logo gap-0 p-1">Mind<span className="text-blue-700 logo">Flow</span></a>
+                        </Link>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -52,7 +54,7 @@ const Navber = () => {
                 </div>
                 <div className="flex-none">
                     <Link to='/register'>
-                    <button className="button">Join Us</button>
+                        <button className="button">Join Us</button>
                     </Link>
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -73,12 +75,12 @@ const Navber = () => {
                             </div>
                         </div>
                     </div>
-                    { userInfo && <div className="dropdown dropdown-end">
+                    {userInfo && <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 <img
                                     alt="Tailwind CSS Navbar component"
-                                    src={userInfo.photoURL}/>
+                                    src={userInfo.photoURL} />
                             </div>
                         </div>
                         <ul
