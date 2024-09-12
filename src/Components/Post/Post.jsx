@@ -1,7 +1,7 @@
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { useQuery } from "react-query";
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
+// import Swal from 'sweetalert2/dist/sweetalert2.js'
+// import 'sweetalert2/src/sweetalert2.scss'
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 const Post = ({ item }) => {

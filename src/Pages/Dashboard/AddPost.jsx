@@ -34,7 +34,7 @@ const AddPost = () => {
     console.log(data);
 
 
-    if(isLoading) return <Loading/>
+    // if(isLoading) return <Loading/>
 
     return (
         <div>

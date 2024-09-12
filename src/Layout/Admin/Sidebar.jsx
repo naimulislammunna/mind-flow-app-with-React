@@ -2,9 +2,10 @@ import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = () => {
     const items = <>
-        <NavLink to='my-profile'><button className="button">My Profile</button></NavLink>
-        <NavLink to='add-post'><button className="button">Add Post</button></NavLink>
-        <NavLink to='my-posts'><button className="button">My Posts</button></NavLink>
+        <NavLink><button className="button">Admin Profile</button></NavLink>
+        <NavLink to='manage-users'><button className="button">Manage Users</button></NavLink>
+        <NavLink to='activities'><button className="button">Activities</button></NavLink>
+        <NavLink to='announcement'><button className="button">Announcement</button></NavLink>
     </>
     return (
         <>
