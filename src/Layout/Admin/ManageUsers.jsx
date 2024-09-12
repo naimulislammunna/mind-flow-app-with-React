@@ -5,7 +5,7 @@ import UsersData from "../../Components/UsersData/UsersData";
 
 const ManageUsers = () => {
     const axiosSecure = useAxiosSecure();
-    const {data, isLoading} = useQuery({
+    const {data, isLoading, refetch} = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const response = await axiosSecure.get('/users')
@@ -19,7 +19,8 @@ const ManageUsers = () => {
             <div className="overflow-x-auto">
                 <table className="min-w-[90%] shadow-md border mx-auto border-gray-100 my-6">
                     <thead>
-                        <tr className="bg-gray-700 text-white">
+                        <tr className="bg-gray-700 text-white text-center">
+                            <th className="py-4 px-6 text-lg text-left border-b"></th>
                             <th className="py-4 px-6 text-lg text-left border-b"></th>
                             <th className="py-4 px-6 text-lg text-left border-b"> Name</th>
                             <th className="py-4 px-6 text-lg text-left border-b">Email</th>
@@ -29,7 +30,7 @@ const ManageUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            data?.map(item => <UsersData key={item._id} item={item}></UsersData>)
+                            data?.map((item, idx) => <UsersData key={item._id} item={item} idx={idx} refetch={refetch} ></UsersData>)
                         }
                     </tbody>
                 </table>
