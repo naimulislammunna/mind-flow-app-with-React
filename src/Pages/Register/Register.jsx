@@ -41,7 +41,7 @@ const Register = () => {
                                     Swal.fire({
                                         position: "top-end",
                                         icon: "success",
-                                        title: "Register Successfully",
+                                        text: "Register Successfully",
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
@@ -80,6 +80,7 @@ const Register = () => {
                             placeholder="Enter username"
                             name="name"
                             type="text"
+                            required
                         />
                     </div>
                     <div className="space-y-2 text-sm text-cyan-700 dark:text-cyan-300">
@@ -92,6 +93,7 @@ const Register = () => {
                             placeholder="Enter Url"
                             name="photoUrl"
                             type="text"
+                            required
                         />
                     </div>
                     <div className="space-y-2 text-sm text-cyan-700 dark:text-cyan-300">
@@ -104,6 +106,7 @@ const Register = () => {
                             placeholder="Enter username"
                             name="email"
                             type="email"
+                            required
                         />
                     </div>
                     <div className="space-y-2 text-sm text-cyan-700 dark:text-cyan-300">
@@ -116,6 +119,7 @@ const Register = () => {
                             placeholder="Enter password"
                             name="password"
                             type="password"
+                            required
                         />
                     </div>
                     <input type="submit" value='Submit' className="w- rounded-md bg-cyan-700 px-4 py-2 text-white transition-colors hover:bg-cyan-900 dark:bg-cyan-700 cursor-pointer" />

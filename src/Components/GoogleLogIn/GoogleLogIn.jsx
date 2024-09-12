@@ -3,21 +3,24 @@ import { AuthContext } from "../../Auth/AuthProvider";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import Swal from "sweetalert2";
 import { toast, ToastContainer } from "react-toastify";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const GoogleLogIn = () => {
     const {googleLogIn} = useContext(AuthContext);
     const axiosPublic = useAxiosPublic();
+    const location = useLocation();
+    const navigate = useNavigate();
+
     const handleGoogleLogIn = () => {
         googleLogIn()
-            .then((res) => {
-                const { displayName, email, photoURL } = res.user;
-
-                const user = {
-                    name: displayName,
-                    email: email,
-                    photo: photoURL
+            .then(({user}) => { ;
+                toast.success( `Welcome ${user?.displayName} - LogIn Successfull`)
+                const userDetails = {
+                    name: user?.displayName,
+                    email: user?.email,
+                    photo: user?.photoURL
                 }
-                axiosPublic.post('/add-users', user)
+                axiosPublic.post('/add-users', userDetails)
                     .then(({ data }) => {
                         console.log(data)
                         if (data.insertedId) {
@@ -32,7 +35,7 @@ const GoogleLogIn = () => {
                         }
                     }
                     )
-                // navigate(location.state || '/');
+                navigate(location.state || '/');
             })
             .catch(() => toast.warn('warning'))
     }
