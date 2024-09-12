@@ -1,27 +1,40 @@
-import { useContext, useState} from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Auth/AuthProvider';
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import { useQuery } from 'react-query';
+import useAxiosSecure from '../../Hook/useAxiosSecure';
+import Loading from '../../Components/Loader/loading';
 
 const AddPost = () => {
-    // const [value, setValue] = useState(null);
+    const [value, setValue] = useState(null);
     const { userInfo } = useContext(AuthContext);
-    const {email, displayName, photoURL } = userInfo;
-    const {register, handleSubmit} = useForm();
-    const onSubmit = async (data) => {
-        const post = {
-            displayName,
-            email,
-            photoURL,
-            data
-        }
-        const response = await axios.post(`${import.meta.env.VITE_SITE_LINK}/post`, {post})
-        console.log(response);
-        
+    const { email, displayName, photoURL } = userInfo;
+    const { register, handleSubmit } = useForm();
+    const axiosSecure = useAxiosSecure();
+
+    const onSubmit = (formData) => {
+        setValue(formData)
     };
-  
-   
+    const { data, isLoading } = useQuery({
+        queryKey: ["addPost"],
+        queryFn: async () => {
+            const response = await axiosSecure.post('/', {
+                displayName,
+                email,
+                photoURL,
+                title: value.title,
+                description: value.description,
+                tag: value.tag
+            })
+            return response;
+        }
+
+    });
+    console.log(data);
+
+
+    if(isLoading) return <Loading/>
 
     return (
         <div>
@@ -45,7 +58,7 @@ const AddPost = () => {
                     </div>
                     <div className="space-y-2">
                         <label>Title</label>
-                        <input type="text" className="text-xl block w-full rounded-lg p-2 pl-5 outline-none drop-shadow-lg bg-white dark:bg-gray-700 dark:text-white border border-gray-400" {...register("title")}/>
+                        <input type="text" className="text-xl block w-full rounded-lg p-2 pl-5 outline-none drop-shadow-lg bg-white dark:bg-gray-700 dark:text-white border border-gray-400" {...register("title")} />
                         <label>Description</label>
                         <div className="relative">
                             <textarea name="" id="" className="h-28 block w-full rounded-lg p-2 pl-5 outline-none drop-shadow-lg bg-white dark:bg-gray-700 dark:text-white border border-gray-400" placeholder="Whats on your mind?" {...register("description")} ></textarea>
@@ -61,9 +74,9 @@ const AddPost = () => {
                             </select>
                         </div>
                         <div className="flex gap-4 items-center">
-                        <button className="flex items-center px-3 py-1 rounded-full border border-gray-500"> <span><AiOutlineLike /></span>UpVote <span className="ml-3">0</span></button>
-                        <button className="flex items-center px-3 py-1 rounded-full border border-gray-500"> <span><AiOutlineDislike /></span> DownVote  <span className="ml-3">0</span></button>
-                    </div>
+                            <button className="flex items-center px-3 py-1 rounded-full border border-gray-500"> <span><AiOutlineLike /></span>UpVote <span className="ml-3">0</span></button>
+                            <button className="flex items-center px-3 py-1 rounded-full border border-gray-500"> <span><AiOutlineDislike /></span> DownVote  <span className="ml-3">0</span></button>
+                        </div>
 
                     </div>
                     {/* button type will be submit for handling form submission*/}

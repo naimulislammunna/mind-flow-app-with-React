@@ -2,25 +2,26 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import Post from "./Post";
 import Loading from "../Loader/loading";
-import { useState } from "react";
 
 const Posts = () => {
-    const { data,  isLoading } = useQuery({
+    const { data, isLoading } = useQuery({
         queryKey: ['post'],
         queryFn: async () => {
             const getData = axios.get(`${import.meta.env.VITE_SITE_LINK}/post`);
             return getData;
         }
     })
-    const [mydata, setMyData ] = useState([]);
+    // setMyData(data)
+
+    // console.log(data.data);
 
     if (isLoading) return <Loading />
     return (
         <div>
-            {mydata && mydata.length > 0 ? <>
+            { data.data.length > 0 ? <>
                 <div>
                     {
-                        mydata.map(item => <Post key={item._id} item={item}></Post>)
+                        data.data.map(item => <Post key={item._id} item={item}></Post>)
                     }
                 </div>
 

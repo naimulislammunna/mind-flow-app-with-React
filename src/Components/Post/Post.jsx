@@ -1,8 +1,34 @@
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
+import { useQuery } from "react-query";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 
-const Post = ({item}) => {
-    const {post} = item;
-    const {displayName, photoURL, data}= post;
+const Post = ({ item }) => {
+    const { displayName, photoURL } = item;
+    // const axiosSecure = useAxiosSecure();
+
+    const handleUpVote = () => {
+        // const {data, isLoading} = useQuery({
+        //     queryKey: ['up-vote'],
+        //     queryFn: async () =>{
+        //         axiosSecure.post('/up-vote', {})
+        //         .then(res =>{
+        //             console.log(res);
+                    
+        //         })
+                
+        //     }
+        // })
+
+        // Swal.fire({
+        //     position: "top-end",
+        //     icon: "success",
+        //     title: "Your work has been saved",
+        //     showConfirmButton: false,
+        //     timer: 1500
+        //   });
+    }
     return (
         <div>
             <div className=" mx-auto my-6 max-w-[650px] rounded-lg bg-white shadow-lg dark:bg-[#18181B] border border-blue-900">
@@ -26,13 +52,13 @@ const Post = ({item}) => {
                 </div> */}
                 {/* Post content */}
                 <div className="mt-3 space-y-2 px-4">
-                    <h2 className="text-xl font-semibold text-slate-800 dark:text-white/90">{data.title}</h2>
-                    <h2 className="text-sm text-gray-500 dark:text-white/50">{data.description}<span className="cursor-pointer text-[#3e96d4]">See more</span></h2>
+                    <h2 className="text-xl font-semibold text-slate-800 dark:text-white/90"></h2>
+                    <h2 className="text-sm text-gray-500 dark:text-white/50"><span className="cursor-pointer text-[#3e96d4]">See more</span></h2>
                 </div>
                 {/* icons */}
                 <div className="mt-4 flex justify-between px-4 pb-4">
                     <div className="flex gap-4 items-center">
-                        <button className="flex items-center px-3 py-1 rounded-full border border-gray-500"> <span><AiOutlineLike /></span>UpVote <span className="ml-3">0</span></button>
+                        <button onClick={handleUpVote} className="flex items-center px-3 py-1 rounded-full border border-gray-500"> <span><AiOutlineLike /></span>UpVote <span className="ml-3">0</span></button>
                         <button className="flex items-center px-3 py-1 rounded-full border border-gray-500"> <span><AiOutlineDislike /></span> DownVote  <span className="ml-3">0</span></button>
                     </div>
                     <div className="flex items-center gap-2">
