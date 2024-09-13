@@ -80,7 +80,8 @@ const Navber = () => {
                             <div className="w-10 rounded-full">
                                 <img
                                     alt="Tailwind CSS Navbar component"
-                                    src={userInfo.photoURL} />
+                                    src={userInfo?.photoURL} />
+                                    
                             </div>
                         </div>
                         <ul
