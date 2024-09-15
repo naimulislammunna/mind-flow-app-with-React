@@ -12,13 +12,6 @@ const AddPost = () => {
     const axiosSecure = useAxiosSecure();
     const [value, setTime] = useState(new Date())
     
-    
-    console.log(value);
-    // console.log(value.split('GMT'));
-    
-    
-    
-
     const onSubmit = async (data) => {
         const response = await axiosSecure.post('/add-post', {
             displayName,
@@ -29,7 +22,8 @@ const AddPost = () => {
             tag: data.tag,
             time: value,
             upVote: 0,
-            dwonVote: 0
+            dwonVote: 0,
+            comment: []
         })
         if(response.data.insertedId){
             Swal.fire({

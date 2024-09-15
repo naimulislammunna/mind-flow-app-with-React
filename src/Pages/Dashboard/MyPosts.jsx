@@ -26,11 +26,10 @@ const MyPosts = () => {
                     <table className="min-w-[90%] shadow-md border mx-auto border-gray-100 my-6">
                         <thead>
                             <tr className="bg-gray-700 text-white text-center">
-                                <th className="py-4 px-6 text-lg text-left border-b"></th>
-                                <th className="py-4 px-6 text-lg text-left border-b"></th>
-                                <th className="py-4 px-6 text-lg text-left border-b"> Name</th>
-                                <th className="py-4 px-6 text-lg text-left border-b">Email</th>
-                                <th className="py-4 px-6 text-lg text-left border-b">Role</th>
+                                <th className="py-4 px-6 text-lg text-left border-b">No</th>
+                                <th className="py-4 px-6 text-lg text-left border-b">Post Title</th>
+                                <th className="py-4 px-6 text-lg text-left border-b">Number Of Vote</th>
+                                <th className="py-4 px-6 text-lg text-left border-b">Comment</th>
                                 <th className="py-4 px-6 text-lg text-left border-b">Delete</th>
                             </tr>
                         </thead>
