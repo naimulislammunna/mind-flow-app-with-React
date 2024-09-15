@@ -1,35 +1,9 @@
-import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
-const UsersData = ({ item, idx, refetch }) => {
+const UsersData = ({ item, idx }) => {
     const axiosSecure = useAxiosSecure();
-    
-    const handleDelete = (id) => {
-        Swal.fire({
-            title: "Are you sure?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Confirm delete"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axiosSecure.delete(`/users/${id}`)
-                    .then(res => {
-                        console.log(res);  
-                        if (res.data.deletedCount > 0) {
-                            refetch();
-                            Swal.fire({
-                                title: "Deleted!",
-                                text: "User has been deleted.",
-                                icon: "success"
-                            });
-                        }
-                    })
-            }
-        });
-    }
+
 
     const handleMakeAdmin = (item) =>{
         axiosSecure.patch(`/users/admin/${item._id}`)
@@ -43,6 +17,7 @@ const UsersData = ({ item, idx, refetch }) => {
             
         })
     }
+    
     return (
         <tr className="hover:bg-gray-50 border-b transition duration-300">
             <td className="py-4 px-6">
@@ -60,7 +35,7 @@ const UsersData = ({ item, idx, refetch }) => {
                 }
             </td>
             <td className="py-4 px-6 border-b">
-                <button onClick={() => handleDelete(item._id)} className="button my-auto ml-4 cursor-pointer"><MdDelete /></button>
+                Gold
             </td>
         </tr>
     );

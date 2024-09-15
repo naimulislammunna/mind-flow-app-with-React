@@ -88,10 +88,11 @@ const PostDetails = () => {
                         <label className="absolute -top-2 left-2 rounded-md bg-sky-600 px-2 text-xs text-sky-100 duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:bg-transparent peer-placeholder-shown:text-sm peer-placeholder-shown:text-zinc-400 peer-focus:-top-2 peer-focus:bg-sky-600 peer-focus:text-xs peer-focus:text-sky-100" htmlFor="navigate_ui_input_33">
                             Comment
                         </label>
-                        <button onClick={submitComment} className="button">Comment</button>
+                        <button onClick={submitComment} className="button">AddComment</button>
                     </div>
                 }
                 <div className="px-10">
+                    <h3 className="text-lg text-cyan-800">All Comment</h3>
                     {
                         data?.comment.map((item, idx)=> <h2 key={idx} className="px-2 py-2 border border-gray-400 rounded-full my-3">{item}</h2>)
                     }

@@ -10,7 +10,6 @@ const ManageUsers = () => {
         queryFn: async () => {
             const response = await axiosSecure.get('/users')
             console.log(response);
-            
             return response.data;
         }
     })
@@ -27,7 +26,7 @@ const ManageUsers = () => {
                             <th className="py-4 px-6 text-lg text-left border-b"> Name</th>
                             <th className="py-4 px-6 text-lg text-left border-b">Email</th>
                             <th className="py-4 px-6 text-lg text-left border-b">Role</th>
-                            <th className="py-4 px-6 text-lg text-left border-b">Delete</th>
+                            <th className="py-4 px-6 text-lg text-left border-b">Status</th>
                         </tr>
                     </thead>
                     <tbody>
