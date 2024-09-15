@@ -1,40 +1,43 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState} from 'react';
 import { AuthContext } from '../../Auth/AuthProvider';
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
 import { useForm } from 'react-hook-form';
-import { useQuery } from 'react-query';
 import useAxiosSecure from '../../Hook/useAxiosSecure';
-import Loading from '../../Components/Loader/loading';
+import Swal from 'sweetalert2';
 
 const AddPost = () => {
-    const [value, setValue] = useState(null);
     const { userInfo } = useContext(AuthContext);
     const { email, displayName, photoURL } = userInfo;
     const { register, handleSubmit } = useForm();
     const axiosSecure = useAxiosSecure();
+    const [value, setTime] = useState(new Date())
+    
+    
+    console.log(value);
+    // console.log(value.split('GMT'));
+    
+    
+    
 
-    const onSubmit = (formData) => {
-        setValue(formData)
-    };
-    const { data, isLoading } = useQuery({
-        queryKey: ["addPost"],
-        queryFn: async () => {
-            const response = await axiosSecure.post('/', {
-                displayName,
-                email,
-                photoURL,
-                title: value.title,
-                description: value.description,
-                tag: value.tag
-            })
-            return response;
+    const onSubmit = async (data) => {
+        const response = await axiosSecure.post('/add-post', {
+            displayName,
+            email,
+            photoURL,
+            title: data.title,
+            description: data.description,
+            tag: data.tag,
+            time: value,
+            upVote: 0,
+            dwonVote: 0
+        })
+        if(response.data.insertedId){
+            Swal.fire({
+                title: "Post Complete!",
+                icon: "success"
+            });
         }
-
-    });
-    console.log(data);
-
-
-    // if(isLoading) return <Loading/>
+    };
 
     return (
         <div>
@@ -77,7 +80,7 @@ const AddPost = () => {
                             <button className="flex items-center px-3 py-1 rounded-full border border-gray-500"> <span><AiOutlineLike /></span>UpVote <span className="ml-3">0</span></button>
                             <button className="flex items-center px-3 py-1 rounded-full border border-gray-500"> <span><AiOutlineDislike /></span> DownVote  <span className="ml-3">0</span></button>
                         </div>
-
+                            
                     </div>
                     {/* button type will be submit for handling form submission*/}
                     <div className='flex justify-end'>

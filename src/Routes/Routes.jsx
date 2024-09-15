@@ -12,6 +12,7 @@ import AdminProfile from "../Layout/Admin/AdminProfile";
 import Activities from "../Layout/Admin/Activities";
 import ManageUsers from "../Layout/Admin/ManageUsers";
 import Announcement from "../Layout/Admin/Announcement";
+import PostDetails from "../Components/Post/PostDetails";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
             {
                 path: '/sign-in',
                 element: <SignIn></SignIn>
+            },
+            {
+                path: '/post/:id',
+                element: <PostDetails></PostDetails>
             }
 
         ]

@@ -6,16 +6,18 @@ import useAxiosSecure from "../../Hook/useAxiosSecure";
 import { useQuery } from "react-query";
 
 const MyPosts = () => {
-    const {UserInfo} = useContext(AuthContext);
+    const {userInfo} = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
-    const {data, isLoading, refetch} = useQuery({
+    const {data, isLoading, refetch}  = useQuery({
         queryKey: ['users-post'],
         queryFn: async () => {
-            const response = await axiosSecure.get(`/post?email=${UserInfo?.email}`)
-            console.log(response);        
+            const response = await axiosSecure.get(`/my-post?email=${userInfo?.email}`)
+            console.log(response.data);        
             return response.data;
         }
+        
     })
+    
     if(isLoading) return <Loading/>
     return (
         <div>

@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = () => {
     const items = <>
-        <NavLink to='my-profile'><button className="button">My Profile</button></NavLink>
+        <NavLink><button className="button">My Profile</button></NavLink>
         <NavLink to='add-post'><button className="button">Add Post</button></NavLink>
         <NavLink to='my-posts'><button className="button">My Posts</button></NavLink>
     </>

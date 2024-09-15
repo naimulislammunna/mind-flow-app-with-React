@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 const UsersData = ({ item, idx, refetch }) => {
     const axiosSecure = useAxiosSecure();
-
+    
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",

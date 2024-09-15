@@ -7,21 +7,19 @@ const Posts = () => {
     const { data, isLoading } = useQuery({
         queryKey: ['post'],
         queryFn: async () => {
-            const getData = axios.get(`${import.meta.env.VITE_SITE_LINK}/post`);
-            return getData;
+            const getData = await axios.get(`${import.meta.env.VITE_SITE_LINK}/post`);
+            return getData.data;
         }
     })
-    // setMyData(data)
-
-    // console.log(data.data);
 
     if (isLoading) return <Loading />
+
     return (
         <div>
-            { data.data.length > 0 ? <>
+            { data?.length > 0 ? <>
                 <div>
                     {
-                        data.data.map(item => <Post key={item._id} item={item}></Post>)
+                        data?.map(item => <Post key={item._id} item={item}></Post>)
                     }
                 </div>
 
