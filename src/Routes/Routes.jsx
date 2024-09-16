@@ -13,6 +13,8 @@ import Activities from "../Layout/Admin/Activities";
 import ManageUsers from "../Layout/Admin/ManageUsers";
 import Announcement from "../Layout/Admin/Announcement";
 import PostDetails from "../Components/Post/PostDetails";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -33,14 +35,14 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/post/:id',
-                element: <PostDetails></PostDetails>
+                element: <PrivateRoute><PostDetails></PostDetails></PrivateRoute>
             }
 
         ]
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             {
                 index: true,
@@ -58,7 +60,7 @@ export const router = createBrowserRouter([
     },
     {
         path: '/admin-dashboard',
-        element: <AdminDeshboard></AdminDeshboard>,
+        element:<AdminRoute><AdminDeshboard></AdminDeshboard></AdminRoute>,
         children: [
             {
                 index: true,
@@ -66,7 +68,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'manage-users',
-                element: <ManageUsers></ManageUsers>
+                element:<ManageUsers></ManageUsers>
             },
             {
                 path: 'activities',

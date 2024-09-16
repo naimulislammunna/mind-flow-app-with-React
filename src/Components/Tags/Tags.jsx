@@ -1,37 +1,20 @@
-import { useEffect, useState } from "react";
-import queryString from 'query-string';
-import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Auth/AuthProvider";
 
 const Tags = () => {
     const [data, setData] = useState([]);
-    // const navigate = useNavigate();
-
-    const handleTag = (tag) => {
-        // let cuurentQuary = {category : tag}
-        // const url = queryString.stringifyUrl({
-        //     url: '/',
-        //     query: cuurentQuary
-        // })
-        // navigate(url)
-
-        Swal.fire({
-                width: "300px",
-                height: "100px",
-                text: 'Register Successfully',
-                position: "top-end",
-                icon: "success",
-                showConfirmButton: false,
-                timer: 1500
-              });
-        
-    }
+    const {handleSearchTag} = useContext(AuthContext);
 
     useEffect(() => {
         fetch('../../../public/public.json')
             .then(res => res.json())
             .then(data => setData(data))
     }, [])
+    
+    const handleTag = (tag) =>{
+        handleSearchTag(tag)     
+    }
+
     return (
         <div>
             <div className="flex gap-4 justify-center overflow-x-auto pt-5">

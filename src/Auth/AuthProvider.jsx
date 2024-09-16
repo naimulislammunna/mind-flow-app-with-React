@@ -8,6 +8,7 @@ export  const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
     const [userInfo, setuserInfo] = useState({});
+    const [tags, setTags] = useState({});
     const [loading, setLoading] = useState(true);
     const axiosPublic = useAxiosPublic();
    
@@ -35,6 +36,9 @@ const AuthProvider = ({children}) => {
         displayName: name, photoURL: photo
       });
     }
+    const handleSearchTag = (value) => {
+        setTags(value);
+    }
 
     useEffect(() =>{
         const unSubscribe = onAuthStateChanged(auth, (user) =>{
@@ -56,7 +60,7 @@ const AuthProvider = ({children}) => {
         return () => {
             unSubscribe();
         }
-    }, [])
+    }, [axiosPublic])
 
     const info = {
         handleRegister,
@@ -65,8 +69,10 @@ const AuthProvider = ({children}) => {
         userInfo, 
         loading,
         googleLogIn,
-        updateUserProfile
-    } 
+        updateUserProfile,
+        handleSearchTag,
+        tags
+    }
 
     return (
         <AuthContext.Provider value={info}>

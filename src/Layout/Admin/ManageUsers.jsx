@@ -5,16 +5,18 @@ import UsersData from "../../Components/UsersData/UsersData";
 
 const ManageUsers = () => {
     const axiosSecure = useAxiosSecure();
-    const {data, isLoading, refetch} = useQuery({
+    const {data, isLoading} = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const response = await axiosSecure.get('/users')
-            console.log(response);
+            console.log("reso", response);
             return response.data;
         }
     })
+    console.log("data", data);
     
     if(isLoading) return <Loading/>
+
     return (
         <div className="home-container">
             <div className="overflow-x-auto">
@@ -31,7 +33,7 @@ const ManageUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            data?.map((item, idx) => <UsersData key={item._id} item={item} idx={idx} refetch={refetch} ></UsersData>)
+                            data?.map((item, idx) => <UsersData key={item._id} item={item} idx={idx} ></UsersData>)
                         }
                     </tbody>
                 </table>

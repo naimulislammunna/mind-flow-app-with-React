@@ -17,7 +17,7 @@ const Navber = () => {
         <NavLink to='/membership'><button className="text-gray text-lg font-semibold hover:border-b-2 hover:border-orange">Membership</button></NavLink>
     </>
     return (
-        <div className="home-container flex">
+        <div className="home-container flex bg-white border-b-2 border-blue-800">
             <div className="navbar flex justify-between">
                 <div>
                     <div className="dropdown">
@@ -53,9 +53,11 @@ const Navber = () => {
                     </ul>
                 </div>
                 <div className="flex-none">
-                    <Link to='/register'>
-                        <button className="button">Join Us</button>
-                    </Link>
+                    {
+                        userInfo?.email || <Link to='/register'>
+                            <button className="button">Join Us</button>
+                        </Link>
+                    }
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                             <div className="indicator">
@@ -81,7 +83,7 @@ const Navber = () => {
                                 <img
                                     alt="Tailwind CSS Navbar component"
                                     src={userInfo?.photoURL} />
-                                    
+
                             </div>
                         </div>
                         <ul
