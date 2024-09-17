@@ -4,7 +4,7 @@ import { AuthContext } from "../Auth/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const createAxios = axios.create({
-    baseURL: 'http://localhost:7000'
+    baseURL: 'https://mindflow-server.vercel.app/'
 })
 
 const useAxiosSecure = () => {
